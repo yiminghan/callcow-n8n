@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-callcow",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "n8n community nodes for Callcow — AI-powered phone call workflows",
   "keywords": [
     "n8n-community-node-package",
@@ -23,6 +23,7 @@
   "main": "dist/nodes/Callcow/Callcow.node.js",
   "scripts": {
     "build": "tsc",
+    "prepare": "[ -d .git ] && git config core.hooksPath scripts/hooks || true",
     "prepublishOnly": "npm run build"
   },
   "n8n": {
