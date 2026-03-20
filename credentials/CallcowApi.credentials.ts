@@ -32,7 +32,7 @@ export class CallcowApi implements ICredentialType {
 
 	test: ICredentialTestRequest = {
 		request: {
-			baseURL: 'https://app.callcow.ai',
+			baseURL: 'https://www.callcow.ai',
 			url: '/api/workflows',
 			method: 'GET',
 		},

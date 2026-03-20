@@ -26,7 +26,7 @@ export class Callcow implements INodeType {
 			},
 		],
 		requestDefaults: {
-			baseURL: 'https://app.callcow.ai',
+			baseURL: 'https://www.callcow.ai',
 			url: '/api/call',
 			method: 'POST',
 			headers: {
@@ -145,7 +145,7 @@ export class Callcow implements INodeType {
 					'callcowApi',
 					{
 						method: 'GET',
-						url: 'https://app.callcow.ai/api/workflows',
+						url: 'https://www.callcow.ai/api/workflows',
 						json: true,
 					},
 				);

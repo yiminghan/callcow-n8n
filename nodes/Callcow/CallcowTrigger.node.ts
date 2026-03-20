@@ -8,7 +8,7 @@ import type {
 	IWebhookResponseData,
 } from 'n8n-workflow';
 
-const BASE_URL = 'https://app.callcow.ai';
+const BASE_URL = 'https://www.callcow.ai';
 
 export class CallcowTrigger implements INodeType {
 	description: INodeTypeDescription = {
