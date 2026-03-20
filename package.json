@@ -23,7 +23,6 @@
   "main": "dist/nodes/Callcow/Callcow.node.js",
   "scripts": {
     "build": "tsc",
-    "prepare": "[ -d .git ] && git config core.hooksPath scripts/hooks || true",
     "prepublishOnly": "npm run build"
   },
   "n8n": {

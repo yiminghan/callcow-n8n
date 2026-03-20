@@ -1,25 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Skip if this is the recursive push from the hook itself
-if [ "${CALLCOW_AUTOPUBLISH:-0}" = "1" ]; then
-  exit 0
-fi
-
-# Only auto-publish when pushing to main
-while read local_ref local_oid remote_ref remote_oid; do
-  if [ "$remote_ref" = "refs/heads/main" ]; then
-    PUSHING_TO_MAIN=1
-    break
-  fi
-done
-
-if [ "${PUSHING_TO_MAIN:-0}" != "1" ]; then
-  exit 0
-fi
-
-echo "==> Auto-publish: pushing to main detected"
-
 # Auth check
 if ! npm whoami &>/dev/null; then
   echo "ERROR: not logged in to npm. Run 'npm login' first." >&2
@@ -55,8 +36,4 @@ echo "==> Published v${NEW_VERSION} to npm"
 
 # Push the version bump commit and tag
 echo "==> Pushing version bump commit and tag..."
-if ! CALLCOW_AUTOPUBLISH=1 git push origin main --follow-tags; then
-  echo "WARNING: failed to push version bump. Push manually with: git push origin main --follow-tags" >&2
-fi
-
-exit 0
+git push origin main --follow-tags
