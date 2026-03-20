@@ -1,0 +1,44 @@
+{
+  "name": "n8n-nodes-callcow",
+  "version": "1.0.1",
+  "description": "n8n community nodes for Callcow — AI-powered phone call workflows",
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n",
+    "callcow",
+    "ai",
+    "phone-calls",
+    "automation"
+  ],
+  "author": {
+    "name": "Callcow",
+    "url": "https://callcow.ai",
+    "email": "hanyiming1995@gmail.com"
+  },
+  "license": "MIT",
+  "main": "dist/nodes/Callcow/Callcow.node.js",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/CallcowApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/Callcow/Callcow.node.js",
+      "dist/nodes/Callcow/CallcowTrigger.node.js"
+    ]
+  },
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "n8n-workflow": "^1.0.0",
+    "typescript": "^5.0.0"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}

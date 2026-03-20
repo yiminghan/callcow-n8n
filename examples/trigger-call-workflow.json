@@ -1,0 +1,83 @@
+{
+  "name": "Callcow - Trigger a Call Example",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual-trigger",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "workflow_id": {
+          "mode": "list",
+          "value": ""
+        },
+        "recipient_phone": "={{ $json.phone }}",
+        "recipient_name": "={{ $json.name }}",
+        "recipient_context": "Follow up on their recent inquiry about our services."
+      },
+      "id": "callcow-trigger-call",
+      "name": "Callcow - Trigger a Call",
+      "type": "n8n-nodes-callcow.callcow",
+      "typeVersion": 1,
+      "position": [500, 300],
+      "credentials": {
+        "callcowApi": {
+          "id": "",
+          "name": "Callcow API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "status",
+              "value": "={{ $json.success ? 'Call triggered' : 'Call failed' }}"
+            },
+            {
+              "name": "message",
+              "value": "={{ $json.message }}"
+            }
+          ]
+        }
+      },
+      "id": "set-response",
+      "name": "Format Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [750, 300]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Callcow - Trigger a Call",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Callcow - Trigger a Call": {
+      "main": [
+        [
+          {
+            "node": "Format Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
