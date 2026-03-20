@@ -16,6 +16,10 @@
     "email": "hanyiming1995@gmail.com"
   },
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yiminghan/callcow-n8n"
+  },
   "main": "dist/nodes/Callcow/Callcow.node.js",
   "scripts": {
     "build": "tsc",
